@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:clases="using:ModManager_Avalonia.Clases"
+             x:Class="ModManager_Avalonia.ImageCard"
+             x:DataType="clases:ImageCardModel"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="500"
+             MinHeight="20" MinWidth="20" Width="{Binding CardWidth}" Height="{Binding CardHeight}">
+
+    <UserControl.Styles>
+        <Style Selector="Border#MainBorder">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Green"/>
+        </Style>
+
+        <Style Selector="Border#MainBorder:pointerover">
+            <Setter Property="BorderThickness" Value="3"/>
+        </Style>
+
+        <Style Selector="Border.selected">
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="Orange"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Border x:Name="MainBorder" 
+            Background="Transparent"
+            Classes.selected="{Binding IsSelected}"
+            PointerPressed="Card_Click">
+        <Grid RowDefinitions="*,50">
+            <Border Grid.RowSpan="2">
+                <Image Source="{Binding ImageSource}"
+                       Stretch="UniformToFill"/>
+            </Border>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding Nombre}"
+                       Foreground="White" 
+                       Background="Black"
+                       Opacity="0.9"
+                       VerticalAlignment="Bottom"/>
+        </Grid>
+    </Border>
+</UserControl>

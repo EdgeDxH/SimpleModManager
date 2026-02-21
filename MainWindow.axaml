@@ -1,0 +1,75 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:ModManager_Avalonia"
+        xmlns:clases="using:ModManager_Avalonia.Clases"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="600"
+        x:Class="ModManager_Avalonia.MainWindow"
+        x:DataType="local:MainWindow"
+        Title="ModManager_Avalonia"
+        WindowStartupLocation="CenterScreen"
+        Width="1350" Height="700">
+    <SplitView x:Name="svMain"
+               IsPaneOpen="True"
+               DisplayMode="CompactInline"
+               CompactPaneLength="40"
+               OpenPaneLength="300">
+		<SplitView.Pane>
+			<Grid Background="#171717">
+                <Grid.RowDefinitions>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="30"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+					<ColumnDefinition Width="40"/>
+					<ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Width="30" Height="30" Background="White" Margin="5,5,0,0" HorizontalAlignment="Left" CornerRadius="25" Click="ToggleMenu"/>
+                <ComboBox x:Name="cbxJuego" Grid.Row="0" Grid.Column="1" Margin="0,5,2,5" HorizontalAlignment="Stretch" x:DataType="clases:Games" DisplayMemberBinding="{Binding Nombre}" SelectionChanged="cbxJuego_SelectionChanged"/>
+                <Button x:Name="btnFilter" Grid.Row="1" Grid.Column="0" Width="30" Height="30" Background="White" CornerRadius="25" Margin="5,5,0,0" VerticalAlignment="Top" Click="btnFilter_Click"/>
+                <ComboBox x:Name="cbxCategoria" Grid.Row="1" Grid.Column="1" Margin="0,5,2,5" HorizontalAlignment="Stretch" x:DataType="clases:Category" DisplayMemberBinding="{Binding Nombre}" SelectionChanged="cbxCategoria_SelectionChanged"/>
+                <ScrollViewer Grid.Row="2" Grid.Column="1" MinWidth="40" MaxWidth="500" IsVisible="{Binding #svMain.IsPaneOpen}" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" DragDrop.AllowDrop="True">
+			        <ItemsRepeater x:Name="CharacterMenu" ItemsSource="{Binding IconCards}">
+                        <ItemsRepeater.Layout>
+                            <WrapLayout Orientation="Horizontal"
+                                        HorizontalSpacing="5"
+                                        VerticalSpacing="5"/>
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate x:DataType="clases:ImageCardModel">
+                                <local:ImageCard Nombre="{Binding Nombre}"
+                                                 CardWidth="{Binding CardWidth}"
+                                                 CardHeight="{Binding CardHeight}"
+                                                 ImgPath="{Binding ImgPath}"
+                                                 ImageSource="{Binding ImageSource}"/>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </ScrollViewer>
+                <Button x:Name="btnAgregar" Grid.Row="2" Grid.Column="0" Background="White" Margin="5,0,0,0" VerticalAlignment="Bottom" Width="30" Height="30" CornerRadius="25" Click="btnAgregar_Click"/>
+            </Grid>
+        </SplitView.Pane>
+        <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DragDrop.AllowDrop="True" DragDrop.Drop="OnDrop">
+	        <ItemsRepeater x:Name="ModViewer" ItemsSource="{Binding ModCards}">
+		        <ItemsRepeater.Layout>
+			        <UniformGridLayout Orientation="Horizontal"
+                        ItemsStretch="Uniform"/>
+                </ItemsRepeater.Layout>
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="clases:ImageCardModel">
+                        <local:ImageCard Nombre="{Binding Nombre}"
+                                         CardWidth="{Binding CardWidth}"
+                                         CardHeight="{Binding CardHeight}"
+                                         ImgPath="{Binding ImgPath}"
+                                         ImageSource="{Binding ImageSource}"
+                                         IsSelectable="True"
+                                         IsSelected="{Binding IsSelected}"/>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </ScrollViewer>
+    </SplitView>
+</Window>

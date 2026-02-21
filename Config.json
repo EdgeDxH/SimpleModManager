@@ -1,0 +1,62 @@
+{
+  "AppConfig": {
+    "ModPreviewWidth": 200,
+    "ModPreviewHeight": 300
+  },
+  "Games": [
+    {
+      "Nombre": "GenshinImpact",
+      "Path": "E:/XXMI-Launcher-Portable-v1.9.2/GIMI/Mods",
+      "Categories": [
+        {
+          "Nombre": "Characters",
+          "IsDirectView": false
+        },
+        {
+          "Nombre": "UI",
+          "IsDirectView": true
+        },
+        {
+          "Nombre": "Others",
+          "IsDirectView": true
+        }
+      ]
+    },
+    {
+      "Nombre": "ZenlessZoneZero",
+      "Path": "E:/XXMI-Launcher-Portable-v1.9.2/ZZMI/Mods",
+      "Categories": [
+        {
+          "Nombre": "Characters",
+          "IsDirectView": false
+        },
+        {
+          "Nombre": "UI",
+          "IsDirectView": true
+        },
+        {
+          "Nombre": "Others",
+          "IsDirectView": true
+        }
+      ]
+    },
+    {
+      "Nombre": "ArknightsEndfield",
+      "Path": "E:/XXMI-Launcher-Portable-v1.9.2/AEMI/Mods",
+      "Categories": [
+        {
+          "Nombre": "Characters",
+          "IsDirectView": false
+        },
+        {
+          "Nombre": "UI",
+          "IsDirectView": true
+        },
+        {
+          "Nombre": "Others",
+          "IsDirectView": true
+        }
+      ]
+    }
+  ]
+}
